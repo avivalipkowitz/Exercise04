@@ -78,23 +78,20 @@ def replace_middle(input_list):
     """Replace all elements of the input list with the the values 42 and 37, in
     that order, except for the first two and last two elements.
     """
-    odd_list = input_list[2:-2:2]
-    for value in odd_list:
-        value = 42
-        
-    even_list = input_list[3:-2:2]
-    for value in even_list:
-        value = 37
+    input_list[2] = 42
+    input_list[3] = 37
+    del(input_list[4:-2])
 
 def delete_third_and_seventh(input_list):
     """Remove the third and seventh elements of the input list."""
-    pass
+    del(input_list[2])
+    del(input_list[5])
 
 def delete_middle(input_list):
     """Remove all elements from the input list except for the first two and the
     last two.
     """
-    pass
+    del(input_list[2:-2])
 
 """
 Part 2: Derived operations on lists
@@ -114,26 +111,39 @@ the test_list_operations.py file for concrete examples of expected behavior.
 
 def custom_len(input_list):
     """custom_len(input_list) imitates len(input_list)"""
-    pass
+    item_length = 0
+    for item in input_list:
+        item_length += 1
+    return item_length
 
 # For the next four functions, get clever using slice operations described in the first half
 def custom_append(input_list, value):
     """custom_append(input_list, value) imitates input_list.append(value)"""
-    pass
+    input_list += [value]
+    return input_list
 
 def custom_extend(input_list, values):
     """custom_extend(input_list, values) imitates input_list.extend(values)"""
-    pass
+    input_list += values
+    return input_list
 
 def custom_insert(input_list, index, value):
     """custom_insert(input_list, index, value) imitates
     input_list.insert(index, value)
     """
-    pass
+    input_list[index:index] = [value]
+    return input_list
 
 def custom_remove(input_list, value):
     """custom_remove(input_list, value) imitates input_list.remove(value)"""
-    pass
+    index = 0
+    for word in input_list:
+        while word != value:
+            index += 1
+        return index
+
+    del(input_list[index])
+    return input_list
 
 def custom_pop(input_list):
     """custom_pop(input_list) imitates input_list.pop()"""
