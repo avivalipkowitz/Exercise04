@@ -138,7 +138,7 @@ def custom_remove(input_list, value):
     """custom_remove(input_list, value) imitates input_list.remove(value)"""
     index = 0
     for word in input_list:
-        while word != value:
+        if word != value:
             index += 1
         return index
 
